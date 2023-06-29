@@ -11,43 +11,60 @@ public class AddTwoNumbers {
     static PrintWriter pr = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     	
     public static void main(String args[]) throws IOException {
-        ListNode l1 = new ListNode(2, new ListNode(4, new ListNode (3, null)));
-        ListNode l2 = new ListNode(5, new ListNode(6, new ListNode (4, null)));
-        ListNode ans = addTwoNumbers(l1, l2);
-        while(ans!=null) {
-        	System.out.print(ans.val + ", ");
-        	ans = ans.next;
-        }
+        System.out.println(intToRoman(399));
         
        
     }
-    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-		ListNode ans = null;
-		ListNode head = null;
-		int carry = 0;
-		
-		while(l1!=null || l2!=null ||carry!=0) {
-			ListNode digit = new ListNode();
-			
-			int l1val, l2val;
-			l1val = l2val = 0;
-			if(l1!=null)l1val=l1.val;
-			if(l2!=null)l2val=l2.val;
-			
-			digit.val=(l1val+l2val+carry)%10;
-			carry = (l1val+l2val+carry)/10;
-			if(ans==null) {
-				ans = digit;
-				head = ans;
+    public static String intToRoman(int num) {
+		String numStr = Integer.toString(num);
+		String ans ="";
+		for(int i =0; i<numStr.length();i++) {
+			int val = Character.getNumericValue(numStr.charAt(i));
+			if(i==numStr.length()-1) {
+				if(val==4) ans+="IV";
+				else if(val==9) ans+= "IX";
+				else {
+					if(val>=5) {
+						ans+="V";
+						val-=5;
+					}
+					for(int j =0; j<val;j++) {
+						ans+="I";
+					}
+				}
 			}
-			else {
-				head.next = digit;
-				head = digit;
+			else if(i==numStr.length()-2) {
+				if(val==4) ans+="XL";
+				else if(val==9) ans+= "XC";
+				else {
+					if(val>=5) {
+						ans+="L";
+						val-=5;
+					}
+					for(int j =0; j<val;j++) {
+						ans+="X";
+					}
+				}
+			}
+			else if(i==numStr.length()-3) {
+				if(val==4) ans+="CD";
+				else if(val==9) ans+= "CM";
+				else {
+					if(val>=5) {
+						ans+="D";
+						val-=5;
+					}
+					for(int j =0; j<val;j++) {
+						ans+="C";
+					}
+				}
+			}
+			else if(i==numStr.length()-4) {
+				for(int j =0; j<val;j++) {
+					ans+="M";
+				}
 			}
 			
-			
-			l1 = (l1==null ? null:l1.next);
-			l2 = (l2==null ? null:l2.next);	
 		}
 		return ans;
         
@@ -75,14 +92,6 @@ public class AddTwoNumbers {
         return br.readLine().trim();
     }
     
-    static class ListNode {
-        int val;
-        ListNode next;
-        ListNode() {}
-        ListNode(int val) { this.val = val; }
-        ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-      }
-
 }
 
 

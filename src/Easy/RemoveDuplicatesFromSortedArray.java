@@ -17,23 +17,17 @@ public class RemoveDuplicatesFromSortedArray {
        
     }
     public static  int removeDuplicates(int[] nums) {
-    	HashSet<Integer> hs = new HashSet<Integer>();
-    	for(int i = 0; i< nums.length; i++) hs.add(nums[i]);
-    	Iterator<Integer> it = hs.iterator();
-    	
-    	int size = hs.size();
-    	int index=0;
-    	while(it.hasNext()) {
-    		nums[index]=it.next();
-    		index++;
+    	int insertIndex = 0;
+    	int prevValue = Integer.MAX_VALUE;
+    	for(int i = 0; i < nums.length; i++) {
+    		if(nums[i]!=prevValue) {
+    			nums[insertIndex]=nums[i];
+    			prevValue = nums[i];
+    			insertIndex++;
+    		}
     	}
-    	while(index<nums.length) {
-    		nums[index]=Integer.MAX_VALUE;
-    		index++;
-    	}
-    	Arrays.sort(nums);
+    	return insertIndex;
     	
-    	return size;
     }
     
     

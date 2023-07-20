@@ -34,12 +34,12 @@ public class MergeSortedArray {
         	}
         	index++;
         }
-        if(index1<m) {
+        while(index1<m) {
         	temp[index]=nums1[index1];
     		index1++;
     		index++;
         }
-        if(index2<n) {
+        while(index2<n) {
         	temp[index]=nums2[index2];
     		index2++;
     		index++;

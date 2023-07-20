@@ -12,10 +12,13 @@ public class MergeSortedArray {
     
     
     public static void main(String args[]) throws IOException {
-        
+        int a1[] = {1,2,3,0,0,0};
+        int a2[] = {2,5,6};
+        merge(a1, 3, a2, 3);
+        System.out.println(Arrays.toString(a1));
        
     }
-    public void merge(int[] nums1, int m, int[] nums2, int n) {
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
     	int temp[] = new int[m+n];
     	int index=0;
         int index1  = 0;
@@ -41,6 +44,7 @@ public class MergeSortedArray {
     		index2++;
     		index++;
         }
+        System.out.println(index1 + " " + index2 + " " + Arrays.toString(nums1)+ " " + Arrays.toString(nums2));
         for(int i = 0; i < m+n; i ++) {
         	nums1[i] = temp[i];
         }

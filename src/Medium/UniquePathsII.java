@@ -71,10 +71,6 @@ public class UniquePathsII {
         
     }
     
-	private static BigInteger factorial(int n) {
-		if(n==0) return new BigInteger("1");
-		return factorial(n-1).multiply(BigInteger.valueOf(n));
-	}
 	static String next() throws IOException {
         while (st == null || !st.hasMoreTokens()) {
             st = new StringTokenizer(br.readLine().trim());

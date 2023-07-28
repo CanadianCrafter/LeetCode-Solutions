@@ -71,7 +71,7 @@ public class InsertInterval {
     	for(int i = 0; i < leftBound;i++) {
     		lis.add(intervals[i]);
     	}
-    	System.out.println(leftBound + "  " + rightBound);
+//    	System.out.println(leftBound + "  " + rightBound);
     	
     	int newLeft =0;
     	int newRight = 0;

@@ -22,10 +22,29 @@ public class PascalsTriangle {
     }
     public static List<List<Integer>> generate(int numRows) {
         List<List<Integer>> ans = new ArrayList<List<Integer>>();
+        
+        //Solution One: Repeat Work but mathy
+//        for(int i =0; i <numRows; i++) {
+//        	List<Integer> row = new ArrayList<Integer>();
+//        	for(int j =0; j <=i; j++) {
+//            	row.add(nCr(i,j).intValue());
+//            }
+//        	ans.add(row);
+//        }
+        
+        
         for(int i =0; i <numRows; i++) {
         	List<Integer> row = new ArrayList<Integer>();
         	for(int j =0; j <=i; j++) {
-            	row.add(nCr(i,j).intValue());
+        		int v1 =0;
+        		int v2 = 0;
+        		if(j==0||i==j) {
+        			row.add(1);
+        			continue;
+        		}
+        		else {
+        			row.add(ans.get(ans.size()-1).get(j-1)+ans.get(ans.size()-1).get(j));
+        		}
             }
         	ans.add(row);
         }

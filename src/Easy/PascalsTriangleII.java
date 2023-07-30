@@ -4,7 +4,7 @@ import java.io.*;
 import java.math.BigInteger;
 import java.util.*;
 
-public class PascalsTriangle {
+public class PascalsTriangleII {
     
     static InputStreamReader is = new InputStreamReader(System.in);
     static BufferedReader br = new BufferedReader(is);
@@ -12,39 +12,20 @@ public class PascalsTriangle {
     static PrintWriter pr = new PrintWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
     	
     public static void main(String args[]) throws IOException {
-    	List<List<Integer>> ans = generate(5);
-    	for(int i = 0; i < ans.size(); i++) {
-    		for(int j = 0; j < ans.get(i).size(); j++) {
-    			System.out.print(ans.get(i).get(j)+" ");
-    		}
-    		System.out.println();
-    	}
+    	List<Integer> ans = getRow(3);
+		for(int j = 0; j < ans.size(); j++) {
+			System.out.print(ans.get(j)+" ");
+		}
+		System.out.println();
     }
-    public static List<List<Integer>> generate(int numRows) {
-        List<List<Integer>> ans = new ArrayList<List<Integer>>();
+    public static List<Integer> getRow(int rowIndex) {
         
-        //Solution One: Repeat Work but mathy
-//        for(int i =0; i <numRows; i++) {
-//        	List<Integer> row = new ArrayList<Integer>();
-//        	for(int j =0; j <=i; j++) {
-//            	row.add(nCr(i,j).intValue());
-//            }
-//        	ans.add(row);
-//        }
-        
-        //Solution Two: Uses previous calculations
-        for(int i =0; i <numRows; i++) {
-        	List<Integer> row = new ArrayList<Integer>();
-        	for(int j =0; j <=i; j++) {
-        		if(j==0||i==j) {
-        			row.add(1);
-        			continue;
-        		}
-    			row.add(ans.get(ans.size()-1).get(j-1)+ans.get(ans.size()-1).get(j));
+        	List<Integer> ans = new ArrayList<Integer>();
+        	for(int j =0; j <=rowIndex; j++) {
+            	ans.add(nCr(rowIndex,j).intValue());
             }
-        	ans.add(row);
-        }
-        return ans;
+        	return ans;
+        
     }
     public static BigInteger nCr (int n, int r) {
     	return factorial(n).divide(factorial(r).multiply(factorial(n-r)));

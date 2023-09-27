@@ -33,19 +33,6 @@ public class PowXN {
         
     }
     
-    public static void generateParenthesis(int numLeft, int numRight, int n, List<String> ans, String s) {
-    	if(numLeft==n&&numRight==n) {
-    		ans.add(s);
-    		return;
-    	}
-    	if(numLeft<n) {
-    		generateParenthesis(numLeft+1, numRight, n, ans, s+"(");
-    	}
-    	if(numRight<numLeft) {
-    		generateParenthesis(numLeft, numRight+1, n, ans, s+")");
-    	}
-    	
-	}
 	static String next() throws IOException {
         while (st == null || !st.hasMoreTokens()) {
             st = new StringTokenizer(br.readLine().trim());
